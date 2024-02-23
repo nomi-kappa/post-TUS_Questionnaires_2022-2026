@@ -112,10 +112,6 @@ ONday_combined_data_oldQ$studyID <- rep('HP-FouE-AI-010223', nrow(ONday_combined
 ONday_combined_data_oldQ$BRICID <- as.factor(ONday_combined_data_oldQ$BRICID)
 levels(ONday_combined_data_oldQ$BRICID) <- toupper(levels(ONday_combined_data_oldQ$BRICID))
 
-# Sample data
-
-
-
 
 #fix
 #SNKT0189 to SKKY0189
@@ -171,6 +167,11 @@ bricid_index <- which(names(ONday_combined_data_oldQ) == "BRICID")
 ONday_combined_data_oldQ <- cbind(ONday_combined_data_oldQ[, c(1:bricid_index)], 
                                   session_data$session,
                                   ONday_combined_data_oldQ[, -(1:bricid_index)])
+
+
+# Rename the column to "BRICID"
+names(ONday_combined_data_oldQ)[bricid_index] <- "BRICID"
+names(ONday_combined_data_oldQ)[names(ONday_combined_data_oldQ) == "session_data$session"] <- "session"
 
 
 #write 
